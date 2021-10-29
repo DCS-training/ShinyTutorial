@@ -62,7 +62,7 @@ If you have R and RStudio already installed:
 
 Alternatively, only to run an app:
 * Install required libraries ("shiny","shinythemes","DT","ggplot2") 
-* In RStudio, run this code do access app copy in the GitHub repository: "shiny::runGitHub("ShinyTutorial","DCS-training", ref= "main/appexample")"
+* In RStudio, run this code do access app copy in the GitHub repository: shiny::runGitHub("ShinyTutorial","DCS-training", ref = "main", subdir = "appexample")
 
 
 ## Project status
