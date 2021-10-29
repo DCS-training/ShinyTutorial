@@ -632,7 +632,7 @@ Similarly to rendering output on a server side, displaying it as a part of a UI 
 | 
 So, how the final application looks like when we combine all the elements? And how the whole thought process looks like, from a key idea?
 
-You can find the example app code here, after the app explanation, as well as load the app from your RStudio by typing *shiny::runGitHub("ShinyTutorial","DCS-training", ref= "main/appexample")* in your console. 
+You can find the example app code here, after the app explanation, as well as load the app from your RStudio by typing *shiny::runGitHub("ShinyTutorial","DCS-training", ref = "main", subdir = "appexample")* in your console. 
 
 |
 |
@@ -737,8 +737,8 @@ ui <- fluidPage(
           p(" "),
           p("To run this app from GitHub 
             locally use the code below:"),
-          code('shiny::runGitHub("ShinyTutorial","DCS-training",
-               ref= "main/appexample") [add when completed]'),
+          code('shiny::runGitHub("ShinyTutorial","DCS-training", 
+               ref = "main", subdir = "appexample")'),
           p(" "),
           p("See the link below for Shiny official page:"),
           tags$a(href="https://shiny.rstudio.com/", 
