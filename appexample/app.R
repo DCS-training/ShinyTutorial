@@ -80,8 +80,8 @@ ui <- fluidPage(
           p(" "),
           p("To run this app from GitHub 
             locally use the code below:"),
-          code('shiny::runGitHub("ShinyTutorial","DCS-training",
-               ref= "main/appexample") [add when completed]'),
+          code('shiny::runGitHub("ShinyTutorial","DCS-training", 
+               ref = "main", subdir = "appexample")'),
           p(" "),
           p("See the link below for Shiny official page:"),
           tags$a(href="https://shiny.rstudio.com/", 
