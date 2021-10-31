@@ -22,7 +22,7 @@ Hex sticker with a Shiny logo, presented on the opening page, was taken from the
 ```
 
  .
- └── ShinyTutorial
+ └── main
      ├── Tutorial.Rmd
      ├── Tutorial.pdf
      ├── README.md
