@@ -60,9 +60,9 @@ If you have R and RStudio already installed:
 * Download the files and folders from the repository, make sure to have it all in one folder
 * Make sure the working directory in RStudio is the same as the folder in which the data is saved (getwd() for checking directory, setwd() for setting relevant directory)
 
-Alternatively, only to run an app:
+Alternatively, to run an app from a direct link:
 * Install required libraries ("shiny","shinythemes","DT","ggplot2") 
-* In RStudio, run this code do access app copy in the GitHub repository: shiny::runGitHub("ShinyTutorial","DCS-training", ref = "main", subdir = "appexample")
+* In RStudio, run code shiny::runGitHub("ShinyTutorial","DCS-training", ref = "main", subdir = "appexample")
 
 
 ## Project status
