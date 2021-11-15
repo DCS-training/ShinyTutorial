@@ -38,17 +38,16 @@ knitr::include_graphics("visual/shiny.png")
 \rule{1\textwidth}{.4pt}
 \end{center}
 
-## Why creating own web apps (and why in Shiny)? {#why}
+## Why create your own web apps (and why in Shiny)? {#why}
 
-|
-| 
-Sometimes a raw code, accompanied by pre-generated tables and visualizations, is not enough to effectively convey the meaning of one's work. Various types of output files are by design static, showcasing results but not analysis behind them. In turn, code itself, a step-by-step description of an analysis, is generally hard to effectively present and explain to non-coding colleges or a conference attendees. Both approaches also reduce any interaction with a wider public down to passive participation, often discouraging to the even most dedicated audience.
+Sometimes raw code, accompanied by pre-generated tables and visualizations, is not enough to effectively convey the meaning of one's work. Various types of output files are by design static, showcasing results but not the analysis behind them. In turn, code itself, a step-by-step description of an analysis, is generally hard to effectively present and explain to non-coding colleagues or a conference attendees. Both approaches also reduce any interaction with a wider public down to passive participation, often discouraging even the most dedicated audience.
 
-Those issues can be resolved by giving people more freedom in exploring both data and the analysis process itself, which can be easily done via an interactive web application. Those engaging with an app will be able to explore data and generate research results on their own, gradually and organically coming to understand what utilized data actually mean and why the author made specific choices during the analysis rather than being told about it. Coding dedicated web apps can also enhance one's research by providing an easy way to explore data and different analytic approaches, simplifying sharing it with other researchers, automating one's work and bypassing the need for tinkering directly with the code itself. 
+These issues can be resolved by giving people more freedom in exploring both data and the analysis process itself, which can be easily done via an interactive web application. Those engaging with an app will be able to explore data and generate research results on their own, gradually and organically coming to understand what utilized data actually mean and why the author made specific choices during the analysis rather than being told about it. Coding dedicated web apps can also enhance one's research by providing an easy way to explore data and different analytic approaches, simplifying sharing it with other researchers, automating one's work and bypassing the need for tinkering directly with the code itself.
 
-R can be successfully used to write apps with the aid of Shiny. Shiny is a little bit more just a library of dedicated functions, it is a whole framework of solutions for creating, running, sharing and deploying apps. While sounding complex, it is perhaps the easiest way to experience the entry-level of app development. Shiny app structure is surprisingly simple yet insanely flexible, allowing applications as complex as user wants them to be. Knowledge of HTML, CSS or JavaScript, basic languages used when building an app, is not a necessity. Everything can be written in R, with Shiny then translating the code into relevant languages on its own.
+R can be successfully used to write apps with the aid of Shiny. Shiny is a little bit more than just a library of dedicated functions, it is a whole framework of solutions for creating, running, sharing and deploying apps. While it may sound complex, it is perhaps the easiest way to experience the entry-level of app development. Shiny app structure is surprisingly simple yet insanely flexible, allowing applications as complex as user wants them to be. Knowledge of HTML, CSS or JavaScript, basic languages used when building an app, is not a necessity. Everything can be written in R, with Shiny then the code can be translated into relevant languages on its own.
 
-If you already know how to code in R, why not to take a step further?
+If you already know how to code in R, why not take a step further?
+
 
 \pagebreak
 \begin{center}
@@ -71,10 +70,10 @@ The aim of this tutorial is primarily to familiarize you with all key stages of 
 | 
 Firstly, see [*Before you start*](#beforestart) to check which libraries you need to install. Additionally, take a look at [*Starting a Shiny app *](#Starting) to get information on how to set up/use the script file when writing an app.
 
-Due to how important theory is to understand the inner structure and workings of a web app,  the tutorial proper starts with a short description of key web app features and how they relate to each other ([*How web applications work?*](#howappswork)). Then the tutorial proceeds with explaining how the general app structure is reflected within a Shiny framework ([*Shiny: app structure*](#appstructure)) and some fundamental customization options ([*Shiny: app themes*](#customization); [*Shiny: writing in-app*](#customization2)). Once the basic structure is understood, the tutorial proceeds with explaining each stage of creating an app, from designing a user interface ([*Shiny: UI, designing layout*](#designinglayout)) and getting user input ([*Shiny: UI, getting user input*](#gettinginput)), through processing input to get output ([*Shiny: server and rendering output*](#renderingoutput)) and displaying it on the user interface ([*Shiny: UI, displaying output*](#displayingoutput)), ending on discussing an example of a completed, functional app ([*Shiny: a functional example*](#functionalexample)).
+Due to the importance of theory in understanding the inner structure and workings of a web app, the tutorial proper starts with a short description of key web app features and how they relate to each other ([*How web applications work?*](#howappswork)). Then the tutorial proceeds with explaining how the general app structure is reflected within a Shiny framework ([*Shiny: app structure*](#appstructure)) and some fundamental customization options ([*Shiny: app themes*](#customization); [*Shiny: writing in-app*](#customization2)). Once the basic structure is understood, the tutorial proceeds by explaining each stage of creating an app, from designing a user interface ([*Shiny: UI, designing layout*](#designinglayout)) and getting user input ([*Shiny: UI, getting user input*](#gettinginput)), through processing input to get output ([*Shiny: server and rendering output*](#renderingoutput)) and displaying it on the user interface ([*Shiny: UI, displaying output*](#displayingoutput)), ending with discussion of an example of a completed, functional app ([*Shiny: a functional example*](#functionalexample)).
 
 |
-The tutorial ends with a brief discussion on key venues for sharing or publishing a shiny app ([*Sharing/deploying an app*](#Publishing)).If by the end  you will be interested in mastering Shiny to a greater degree, see [*Closing remarks*](#remarks) and [*Further reading and external resources*](#furtherreading) pages. The first one shortly discuss possible venues for developing your Shiny skills further. The second one includes links to all the relevant sites, including tutorials of various degrees of complexity, presentations and reference sheets summarizing key points, ending with books with in-depth knowledge about building complex Shiny applications and hosting them online.
+The tutorial ends with a brief discussion of key venues for sharing or publishing a shiny app ([*Sharing/deploying an app*](#Publishing)).If by the end  you are interested in mastering Shiny to a greater degree, see [*Closing remarks*](#remarks) and [*Further reading and external resources*](#furtherreading) pages. The first briefly discusses possible venues for developing your Shiny skills further. The second includes links to all the relevant sites, including tutorials of various degrees of complexity, presentations and reference sheets summarizing key points, ending with books with in-depth knowledge about building complex Shiny applications and hosting them online.
 
 
 
@@ -151,7 +150,7 @@ Once the libraries are installed, a new Shiny app can be created either by start
 knitr::include_graphics("visual/NewShinyWebApp.jpg")
 ```
 |
-If you decide with creating a new file through *Shiny Web App...* you will be first asked where you wish to create an app in one or multiple R files. The reason behind the prompt will be answered early in this tutorial, but of now I suggest starting with just one file. Once the option is selected, a new app is named and its location defined, a new file will be created. It will contain an example code for a very simple app, can be either completely erased or repurposed.
+If you decide to create a new file through *Shiny Web App...* you will be first asked where you wish to create an app in one or multiple R files. The reason behind the prompt will be answered early in this tutorial, but for now I suggest starting with just one file. Once the option is selected, a new app is named and its location defined, a new file will be created. It will contain an example code for a very simple app, can be either completely erased or repurposed.
 
 
 
@@ -168,9 +167,10 @@ knitr::include_graphics("visual/Difference.jpg")
 
 |
 
-In the case of starting with a completely empty R file, file display options initially will be the same to any other R script file. However, once key functions of a Shiny app (explained later in the tutorial) are included and the file is saved, RStudio will update applicable options in the upper right corner of the file display. "Run" button will change into a "Run App" button. Results of running an app, instead of being saved in an environment, will be displayed in a separate window due to RStudio simulating a web server environment. 
+In the case of starting with a completely empty R file, file display options initially will be the same as any other R script file. However, once the key functions of a Shiny app (explained later in the tutorial) are included and the file is saved, RStudio will update applicable options in the upper right corner of the file display. "Run" button will change into a "Run App" button. Results of running an app, instead of being saved in an environment, will be displayed in a separate window due to RStudio simulating a web server environment.
 
-Additionally, a "publish the application or document" button (blue "eye" sign) will also displayed. It allows publishing the results of your work directly to dedicated repositories or servers, given you have configured RStudio to work with them.
+Additionally, a "publish the application or document" button (blue "eye" sign) will also be displayed. It allows you to publish the results of your work directly to dedicated repositories or servers, as long as you have configured RStudio to work with  them.
+
 
 |
 
@@ -183,7 +183,7 @@ knitr::include_graphics("visual/RunningAppRStudio.jpg")
 \rule{1\textwidth}{.4pt}
 \end{center}
 
-## How web applications work? {#howappswork}
+## How do web applications work? {#howappswork}
 
 |
 ```{r fig.align="center", fig.show="hold",  fig.cap = "Web app, simplified structure", echo=FALSE}
@@ -192,7 +192,7 @@ knitr::include_graphics("visual/AppStructure.jpg")
 
 |
  
-Despite web applications coming in all shapes or forms, all are sharing the same structure. 
+Despite web applications coming in all shapes and forms, they all share the same structure.
 
 What we, the users, see when running an app is called a user interface, "UI" for short. UI provides means for a user to interact with an application. Primarily, it gathers input, for example through pressed buttons or written text, and provides expected output, like tables or plots formatted accordingly to input. Today we are mostly interacting with graphic user interface (GUI), but there is a variety of different approaches to user-app interaction, from displaying command lines up to utilizing e.g. sound for communication (voice user interface). UI can be also understood as the "front end" of an application, with front-end developers meaning programmers dealing mostly with this side of an application.
 
@@ -353,7 +353,7 @@ knitr::include_graphics("visual/TextExamples.jpg")
 ```
 | 
 | 
-Sometimes you may want to put a written text in the application itself, for example a reason behind the app or a basic outline how to use it. 
+Sometimes you may want to put a written text in the application itself, for example a reason for the app or a basic outline of how to use it. 
 
 It can be easily done by using several different functions, elaborated on [here](https://shiny.rstudio.com/tutorial/written-tutorial/lesson2/). For example, *p()* function is commonly used to embed simple text paragraphs, with *strong()* doing the same but with text in bold while *em()* produces italicized text. If someone wants to display text input like a code would be displayed, *code()* can be used. Other often utilized functions are *h1()* to *h4()*, which can render titles of different sizes.
 
@@ -386,7 +386,7 @@ knitr::include_graphics("visual/InputWidgets.jpg")
 | 
 Widgets are essentially web interactive elements used to obtain input data from the user. They may be buttons, sliders or checkboxes, but also areas to write in user's answer or even upload own documents. The list of basic widgets is available [here](https://shiny.rstudio.com/gallery/widget-gallery.html), with related code [here](https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/). The list of custom widgets from the *shinyWidgets* library is available [here](http://shinyapps.dreamrs.fr/shinyWidgets/). 
 
-While arguments possible to define differ between widget functions, all will start from an argument defining a name of an object which will store an input (in case of Shiny library functions, under the name *inputId*), with a possibility to define a widget name under *label* argument. For some widgets defining only input id and its label is enough to work properly (*textInput*), while others require additional information, for example choices available or initially selected/default answer (usually *value* or *selected* argument).
+While possible arguments to define differ between widget functions, all will start from an argument defining a name of an object which will store an input (in case of Shiny library functions, under the name *inputId*), with a possibility to define a widget name under *label* argument. For some widgets defining only input id and its label is enough to work properly (*textInput*), while others require additional information, for example choices available or initially selected/default answer (usually *value* or *selected* argument).
 
 Among best practices when adding widgets and defining their parameters is to do it with a readability and order in mind. All widgets should be named accordingly, to clearly convey their utility to the user. When arranged, it is good to remember to put them in a descending order, i.e. from the key input (e.g. definition of what data to be processed) to input defining minor details (e.g. specifics of formatting of the data plots or tables).
 
@@ -630,7 +630,7 @@ Similarly to rendering output on a server side, displaying it as a part of a UI 
 
 |
 | 
-So, how the final application looks like when we combine all the elements? And how the whole thought process looks like, from a key idea?
+So, how does the final application look when we combine all the elements? And how does the whole thought process look, from a key idea?
 
 You can find the example app code here, after the app explanation, as well as load the app from your RStudio by typing *shiny::runGitHub("ShinyTutorial","DCS-training", ref = "main", subdir = "appexample")* in your console. 
 
@@ -828,7 +828,7 @@ shinyApp(ui = ui, server = server)
 
 |
 | 
-So you wrote an app, what now? Well, Shiny app can be either shared or deployed. By *sharing* we understand simply providing means of downloading r script and related data. The receiving user needs to have RStudio and all the required libraries installed to run an app locally. In turn, *deployment* means putting your app, with all dependencies (required files and data), on an online server, accessible through a unique URL. Once completed, the app is running fully on an online server, with a receiving user only needing an URL to access it. 
+So you wrote an app, what now? Well, aShiny app can be either shared or deployed. By *sharing* we understand simply providing means of downloading r script and related data. The receiving user needs to have RStudio and all the required libraries installed to run an app locally. In turn, *deployment* means putting your app, with all dependencies (required files and data), on an online server, accessible through a unique URL. Once completed, the app is running fully on an online server, with a receiving user only needing an URL to access it. 
 
 | 
 As there are multiple ways of sharing or deploying an app in this tutorial we point towards two most often used approaches: sharing *via* [GitHub](https://github.com/) or deploying through [Shinyapps.io](https://www.shinyapps.io/). If someone is interested in running their own server, it is possible through a dedicated package *Shiny Server* (downloadable [here](https://www.rstudio.com/products/shiny/shiny-server/)). Other alternatives of deployment are available in the [*The Shiny AWS Book*](https://business-science.github.io/shiny-production-with-aws-book/).
@@ -870,10 +870,10 @@ It is worth noting, that compiled dependencies also include libraries. It may re
 | 
 | 
 
-Congratulations, you managed to get through the whole tutorial! Assuming you still have some interest left in you, you can proceed from this point two ways, either by exploring how Shiny works with other major frameworks available *via* RStudio, or by going more in-depth with the Shiny itself and hosting apps online. For the more info about self-development, see the next page, especially books included like [*Mastering Shiny*](https://mastering-shiny.org/). In case of willingness to combine Shiny with other frameworks within the Rstudio, see the suggestion below.
+Congratulations, you managed to get through the whole tutorial! You can proceed from this point two ways, either by exploring how Shiny works with other major frameworks available *via* RStudio, or by going more in-depth with the Shiny itself and hosting apps online. For the more info about self-development, see the next page, especially books included like [*Mastering Shiny*](https://mastering-shiny.org/). In case of willingness to combine Shiny with other frameworks within the Rstudio, see the suggestion below.
 
 | 
-In general, it is always a good starting point to try replicate what you have learn on data you have an interest on (your research data or just something you know well). This will give you the chance to test your knowledge and by knowing the original data better it will be easier to picture what type of visualisations/ information you wish to show.
+In general, it is always a good starting point to try replicate what you have learnt on data you have an interest in (your research data or just something you know well). This will give you the chance to test your knowledge and by knowing the original data better it will be easier to picture what type of visualisations/ information you wish to show.
 
 | 
 | 
