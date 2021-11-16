@@ -56,7 +56,8 @@ To be able to access Rmd file or run the app you have to have R and RStudio inst
 
 If you have R and RStudio already installed:
 * Install required libraries ("shiny","shinythemes","DT","ggplot2") to be able to run or modify the app file
-* To be able to change and/or knit the Rmd document into a pdf file install required libraries ("rmarkdown","knitr"), including LaTeX extensions ("tinytex" or similar). If necessary, "devtools" may also be needed
+* To be able to change and/or knit the Rmd document into a pdf file install required libraries ("rmarkdown","knitr") and a TeX distribution. The author suggests either TinyTeX 
+or MiKTeX. If necessary, "devtools" may also be needed
 * Download the files and folders from the repository, make sure to have it all in one folder
 * Make sure the working directory in RStudio is the same as the folder in which the data is saved (getwd() for checking directory, setwd() for setting relevant directory)
 
