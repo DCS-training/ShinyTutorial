@@ -9,7 +9,7 @@
 * [Author and contact](#author-and-contact)
 
 ## General info
-This repository contains all the files related to the tutorial "Building interactive web applications in R using SHINY", both ones necessary to create a tutorial PDF file as well as a functioning example of a Shiny app. The tutorial aims at familiarizing the reader with all key stages of web app creation in R, including all key libraries. 
+This repository contains all the files related to the tutorial "Building interactive web applications in R using SHINY", both ones necessary to create a tutorial PDF file as well as a functioning example of a Shiny app. The tutorial (DOI: https://doi.org/10.5281/zenodo.5705151) aims at familiarizing the reader with all key stages of web app creation in R, including all key libraries.
 
 ## Technical background
 PDF document was knitted in RStudio (ver. 1.3.1073; R ver. 4.02), using RMarkdown library (ver. 2.7) and TinyTex (LaTex distribution). Diagrams presented (Fig. 5-7, namely: AppStructure, SideLayout, TabsetLayout) were done in MS PowerPoint. 
