@@ -349,7 +349,7 @@ ui <- fluidPage(
 
 ## Shiny: writing in-app {#customization2}
 
-```{r fig.align="center", fig.show="hold",out.width = '100%', fig.cap = "Written text displayed in a Shiny ap", echo=FALSE}
+```{r fig.align="center", fig.show="hold",out.width = '100%', fig.cap = "Written text displayed in a Shiny app", echo=FALSE}
 knitr::include_graphics("visual/TextExamples.jpg")
 ```
 | 
