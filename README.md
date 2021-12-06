@@ -69,7 +69,9 @@ Alternatively, to run the app via a link:
 ## Project status
 7-27.10.21 -> Tutorial creation
 
-28.10.21   -> Tutorial completed
+15.10.21   -> First Tutorial version knitted
+
+28.10.21   -> Work completed
 
 29.10.21   -> Repository created
 
