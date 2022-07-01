@@ -436,7 +436,7 @@ Among best practices when adding widgets and defining their parameters is to do 
 | 
 What if a widget is necessary only in case of other widget specific input? 
 
-If you wish for some of the options to remain hidden till the specific conditions occur, you can use *conditionalPanel()* function. two key arguments to include is the *conditon*, under which additional widget will appear, and the widget itself. For example, *conditon = ("input.InputName = 2")* tells us, that the specific input, here named *InputName*, needs to be set as numerical 2 to trigger the additional widget to appear. One thing to remember though, is that conditions are evaluated under the JavaScript coding, not R.
+If you wish for some of the options to remain hidden till the specific conditions occur, you can use *conditionalPanel()* function. two key arguments to include is the *condition*, under which additional widget will appear, and the widget itself. For example, *conditon = ("input.InputName = 2")* tells us, that the specific input, here named *InputName*, needs to be set as numerical 2 to trigger the additional widget to appear. One thing to remember though, is that conditions are evaluated under the JavaScript coding, not R.
 
 | 
 ```{r eval=FALSE, echo=TRUE}
@@ -453,7 +453,7 @@ If you wish for some of the options to remain hidden till the specific condition
           selected = 1)              
       ,  
       conditionalPanel(              
-          conditon = (               #Establishing a conditon
+          condition = (              #Establishing a conditon
             "input.InputName = 2"    #for the widget to appear only
             ),                       #after a second choice is selected
           sliderInput(               #Widget that will appear if the     
