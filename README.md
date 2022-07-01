@@ -94,9 +94,9 @@ National Museums of Scotland, Research associate
 
 Higher Education Academy, Associate fellow
 
-https://www.ed.ac.uk/profile/andrzej-romaniuk
+https://andrzejromaniuk.github.io/CV/
 
-https://www.linkedin.com/in/andrzej-aleksander-romaniuk-74145292/
+https://www.researchgate.net/profile/Andrzej-Romaniuk
 
 https://github.com/AndrzejRomaniuk
 
