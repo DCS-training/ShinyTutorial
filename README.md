@@ -56,14 +56,13 @@ To be able to access Rmd file or run the app you have to have R and RStudio inst
 * RStudio can be downloaded from: https://rstudio.com/products/rstudio/download/#download
 
 If you have R and RStudio already installed:
-* Install required libraries ("shiny","shinythemes","DT","ggplot2") to be able to run or modify the app file
-* To be able to change and/or knit the Rmd document into a pdf file install required libraries ("rmarkdown","knitr") and a TeX distribution. The author suggests either TinyTeX 
-or MiKTeX. If necessary, "devtools" may also be needed
+* Install required libraries ("shiny","shinythemes","DT","ggplot2","rsconnect","shinyWidgets") to be able to run or modify the app file
+* To be able to change and/or knit the Rmd document into a pdf file install required libraries ("rmarkdown","knitr") and a TeX distribution. The author suggests either TinyTeX or MiKTeX. If necessary, "devtools" may also be needed
 * Download the files and folders from the repository, make sure to have it all in one folder
 * Make sure the working directory in RStudio is the same as the folder in which the data is saved (getwd() for checking directory, setwd() for setting relevant directory)
 
 Alternatively, to run the app via a link:
-* Install required libraries ("shiny","shinythemes","DT","ggplot2") 
+* Install required libraries ("shiny","shinythemes","DT","ggplot2","rsconnect","shinyWidgets") 
 * In RStudio, run code shiny::runGitHub("ShinyTutorial","DCS-training", ref = "main", subdir = "appexample")
 
 
@@ -77,6 +76,8 @@ Alternatively, to run the app via a link:
 28.10.21   -> Work completed
 
 29.10.21   -> Repository created
+
+29.06-1.07.22 -> Fixing typos, reworking the Credits section; Readme updated
 
 
 ## Author and contact
