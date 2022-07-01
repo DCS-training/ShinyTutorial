@@ -77,6 +77,8 @@ Alternatively, to run the app via a link:
 
 29.10.21   -> Repository created
 
+13.06.22   -> Tutorial translated into Polish, see [here](https://github.com/AndrzejRomaniuk/ShinySamouczek)
+
 29.06-1.07.22 -> Fixing typos, reworking the Credits section; Readme updated
 
 
