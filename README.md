@@ -103,3 +103,7 @@ https://www.researchgate.net/profile/Andrzej-Romaniuk
 https://github.com/AndrzejRomaniuk
 
 https://orcid.org/0000-0002-4977-9241
+
+
+## License
+[![License: CC BY-NC 4.0](https://licensebuttons.net/l/by-nc/4.0/80x15.png)](https://creativecommons.org/licenses/by-nc/4.0/)
