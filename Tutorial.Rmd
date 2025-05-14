@@ -5,9 +5,10 @@ author:
   - https://doi.org/10.5281/zenodo.5705151
 date: 15.10.21
 output: 
-  pdf_document:
+  html_document:
     toc: true
     toc_depth: 2
+    toc_float: true
 fontsize: 12pt
 geometry: margin=1in
 urlcolor:  blue
@@ -23,13 +24,16 @@ knitr::opts_chunk$set(echo = TRUE)
 \rule{1\textwidth}{.4pt}
 \end{center}
 
-```{r fig.align="center", fig.show="hold", echo=FALSE, out.width = '45%'}
+```{r fig.align="center", fig.show="hold", echo=FALSE, out.width = '50%'}
 knitr::include_graphics("https://raw.github.com/DCS-training/ShinyTutorial/main/visual/UoELogo.png")
 
 ```
 
-```{r fig.align="center", figures-side, fig.show="hold", echo=FALSE, out.height = '10%'}
+```{r  fig.align="center", out.width="30%",  echo=FALSE, out.height = '3%'}
 knitr::include_graphics("https://raw.github.com/DCS-training/ShinyTutorial/main/visual/DCS.jpg")
+```
+
+```{r     fig.align="center", out.width="15%",  echo=FALSE}
 knitr::include_graphics("https://raw.github.com/DCS-training/ShinyTutorial/main/visual/shiny.png")
 ```
 
@@ -211,7 +215,7 @@ However, the computation of output does not happen within the UI, but on a serve
 |
 | 
 
-Not surprisingly, the layout of a Shiny app follows the same logic as every other application. Elements of the UI, like general layout, interactive elements (e.g. buttons, scrolls, text input) and output display are defined within *fluidPage()* function. In turn, the server-side of an app is defined actively while you code, but with keeping in mind the internal logic of an app. In *function(input, output, session) {}* two key elements are input and output as pre-defined arguments, with all the code to be run included in {}. The function that combines UI and server elements into a functional whole is *shinyApp()*, which needs two key arguments, named UI and server. 
+Not surprisingly, the layout of a Shiny app follows the same logic as every other application. Elements of the UI, like general layout, interactive elements (e.g. buttons, scrolls, text input) and output display are defined within `fluidPage()` function. In turn, the server-side of an app is defined actively while you code, but with keeping in mind the internal logic of an app. In `function(input, output, session) {}` two key elements are input and output as pre-defined arguments, with all the code to be run included in {}. The function that combines UI and server elements into a functional whole is `shinyApp()`, which needs two key arguments, named UI and server. 
 
 As Shiny supports css, any app written in R will be able to automatically adapt and resize to fit different displays (e.g. PC, phone display).
 
@@ -256,7 +260,7 @@ knitr::include_graphics("https://raw.github.com/DCS-training/ShinyTutorial/main/
 
 |
 
-So, how do we code in the layout of our app user interface? It is essentially a two-stage approach. We first define what general structure the layout would follow by nesting a specific function within *fluidPage()*. The simplest, and included as default, is *sidebarLayout()*. It contains two areas (panels): the main panel, intended to display results, and the side panel, for widgets necessary for collecting user input. The location of a sidebar is defined by an argument *position*, which is assigned as *position = "left"* by default. Both panels are nested with the layout function by using *sidebarPanel()* and *mainPanel()* functions. 
+So, how do we code in the layout of our app user interface? It is essentially a two-stage approach. We first define what general structure the layout would follow by nesting a specific function within `fluidPage()`. The simplest, and included as default, is `sidebarLayout()`. It contains two areas (panels): the main panel, intended to display results, and the side panel, for widgets necessary for collecting user input. The location of a sidebar is defined by an argument `position`, which is assigned as `position = "left"` by default. Both panels are nested with the layout function by using `sidebarPanel()` and `mainPanel()` functions. 
 
 |
 ```{r eval=FALSE, echo=TRUE}
@@ -285,7 +289,7 @@ So, how do we code in the layout of our app user interface? It is essentially a 
 
 |
 
-There are other layouts and panel types one can use when designing own application. For example, *flowLayout()* and *verticalLayout()* enables creating an app with multiple panels. For even more freedom, *fluidRow()* and *fixedRow()* enable coding in a grid layout and fitting panels in a specific position. Among more popular panel functions *titlePanel()* and *headerPanel()* may be of use if one wants to display an app name, and can be nested before establishing a layout itself. While elements can be included without declaring a creation of a new panel, the best practice is to gather them together, e.g. for inputs by using *inputPanel()* or *wellPanel()*. See [here](https://bookdown.org/weicheng/shinyTutorial/ui.html#layout) or [here](https://shiny.rstudio.com/articles/layout-guide.html) for further explanation and examples on how to design a layout and nest in required panels.
+There are other layouts and panel types one can use when designing own application. For example, `flowLayout()` and `verticalLayout()` enables creating an app with multiple panels. For even more freedom, `fluidRow()` and `fixedRow()` enable coding in a grid layout and fitting panels in a specific position. Among more popular panel functions `titlePanel()` and `headerPanel()` may be of use if one wants to display an app name, and can be nested before establishing a layout itself. While elements can be included without declaring a creation of a new panel, the best practice is to gather them together, e.g. for inputs by using `inputPanel()` or `wellPanel()`. See [here](https://bookdown.org/weicheng/shinyTutorial/ui.html#layout) or [here](https://shiny.rstudio.com/articles/layout-guide.html) for further explanation and examples on how to design a layout and nest in required panels.
 
 
 ```{r fig.align="center", fig.show="hold",out.width = '90%', fig.cap = "Left - tabset layout; Right - formulation of that layout", echo=FALSE}
@@ -293,7 +297,7 @@ knitr::include_graphics("https://raw.github.com/DCS-training/ShinyTutorial/main/
 ```
 
 |
-App layout can be defined only by using panel functions, especially if we nest them into each other. For example, *tabsetPanel()* is a master function for creating and displaying tabs, with *tabPanel()* panel function used to create specific tabs. See code below for a functional example:
+App layout can be defined only by using panel functions, especially if we nest them into each other. For example, `tabsetPanel()` is a master function for creating and displaying tabs, with `tabPanel()` panel function used to create specific tabs. See code below for a functional example:
 
 |
 
@@ -330,7 +334,7 @@ knitr::include_graphics("https://raw.github.com/DCS-training/ShinyTutorial/main/
 
 | 
 | 
-One of the easy ways to further customize a Shiny app, without going too much into details, is to use *shinythemes* library. It contains over 15 different themes, changing layout colour, font type and size, and minor stylistic elements (e.g. differently looking buttons/checkboxes). To use a specific theme one just need to put *shinytheme()* argument into the *fluidpage()* function, with the theme name included within. If you're not certain which theme to use, you can include *themeSelector()* as an argument instead, which will provide one with a pop-up window with all themes present when run. More info about this library can be found [here](https://rstudio.github.io/shinythemes/).
+One of the easy ways to further customize a Shiny app, without going too much into details, is to use `shinythemes` library. It contains over 15 different themes, changing layout colour, font type and size, and minor stylistic elements (e.g. differently looking buttons/checkboxes). To use a specific theme one just need to put `shinytheme()` argument into the `fluidpage()` function, with the theme name included within. If you're not certain which theme to use, you can include `themeSelector()` as an argument instead, which will provide one with a pop-up window with all themes present when run. More info about this library can be found [here](https://rstudio.github.io/shinythemes/).
 
 | 
 ```{r eval=FALSE, echo=TRUE}
@@ -358,9 +362,9 @@ knitr::include_graphics("https://raw.github.com/DCS-training/ShinyTutorial/main/
 | 
 Sometimes you may want to put a written text in the application itself, for example a reason for the app or a basic outline of how to use it. 
 
-It can be easily done by using several different functions, elaborated on [here](https://shiny.rstudio.com/tutorial/written-tutorial/lesson2/). For example, *p()* function is commonly used to embed simple text paragraphs, with *strong()* doing the same but with text in bold while *em()* produces italicized text. If someone wants to display text input like a code would be displayed, *code()* can be used. Other often utilized functions are *h1()* to *h4()*, which can render titles of different sizes.
+It can be easily done by using several different functions, elaborated on [here](https://shiny.rstudio.com/tutorial/written-tutorial/lesson2/). For example, `p()` function is commonly used to embed simple text paragraphs, with `strong()` doing the same but with text in bold while `em()` produces italicized text. If someone wants to display text input like a code would be displayed, `code()` can be used. Other often utilized functions are `h1()` to `h4()`, which can render titles of different sizes.
 
-Text can be embed on any level of the ui. It is possible to e.g. include *h1()* with the app name directly within fluidPage(). However, generally for a written text I suggest creating a dedicated panel, for the better readability.
+Text can be embed on any level of the ui. It is possible to e.g. include `h1()` with the app name directly within fluidPage(). However, generally for a written text I suggest creating a dedicated panel, for the better readability.
 
 | 
 ```{r eval=FALSE, echo=TRUE}
@@ -387,9 +391,9 @@ knitr::include_graphics("https://raw.github.com/DCS-training/ShinyTutorial/main/
 
 |
 | 
-Widgets are essentially web interactive elements used to obtain input data from the user. They may be buttons, sliders or checkboxes, but also areas to write in user's answer or even upload own documents. The list of basic widgets is available [here](https://shiny.rstudio.com/gallery/widget-gallery.html), with related code [here](https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/). The list of custom widgets from the *shinyWidgets* library is available [here](http://shinyapps.dreamrs.fr/shinyWidgets/). 
+Widgets are essentially web interactive elements used to obtain input data from the user. They may be buttons, sliders or checkboxes, but also areas to write in user's answer or even upload own documents. The list of basic widgets is available [here](https://shiny.rstudio.com/gallery/widget-gallery.html), with related code [here](https://shiny.rstudio.com/tutorial/written-tutorial/lesson3/). The list of custom widgets from the `shinyWidgets` library is available [here](http://shinyapps.dreamrs.fr/shinyWidgets/). 
 
-While possible arguments to define differ between widget functions, all will start from an argument defining a name of an object which will store an input (in case of Shiny library functions, under the name *inputId*), with a possibility to define a widget name under *label* argument. For some widgets defining only input id and its label is enough to work properly (*textInput*), while others require additional information, for example choices available or initially selected/default answer (usually *value* or *selected* argument).
+While possible arguments to define differ between widget functions, all will start from an argument defining a name of an object which will store an input (in case of Shiny library functions, under the name `inputId`), with a possibility to define a widget name under `label` argument. For some widgets defining only input id and its label is enough to work properly (`textInput`), while others require additional information, for example choices available or initially selected/default answer (usually `value` or `selected` argument).
 
 Among best practices when adding widgets and defining their parameters is to do it with a readability and order in mind. All widgets should be named accordingly, to clearly convey their utility to the user. When arranged, it is good to remember to put them in a descending order, i.e. from the key input (e.g. definition of what data to be processed) to input defining minor details (e.g. specifics of formatting of the data plots or tables).
 
@@ -437,7 +441,7 @@ Among best practices when adding widgets and defining their parameters is to do 
 | 
 What if a widget is necessary only in case of other widget specific input? 
 
-If you wish for some of the options to remain hidden till the specific conditions occur, you can use *conditionalPanel()* function. two key arguments to include is the *condition*, under which additional widget will appear, and the widget itself. For example, *conditon = ("input.InputName = 2")* tells us, that the specific input, here named *InputName*, needs to be set as numerical 2 to trigger the additional widget to appear. One thing to remember though, is that conditions are evaluated under the JavaScript coding, not R.
+If you wish for some of the options to remain hidden till the specific conditions occur, you can use `conditionalPanel()` function. two key arguments to include is the `condition`, under which additional widget will appear, and the widget itself. For example, `conditon = ("input.InputName = 2")` tells us, that the specific input, here named `InputName`, needs to be set as numerical 2 to trigger the additional widget to appear. One thing to remember though, is that conditions are evaluated under the JavaScript coding, not R.
 
 | 
 ```{r eval=FALSE, echo=TRUE}
@@ -480,15 +484,15 @@ If you wish for some of the options to remain hidden till the specific condition
 |
 | 
 
-Every server function has to contain two arguments, one to obtain an input from the UI, called simply *input*, and second used to store all rendered objects, not surprisingly named *output*. In actuality, there is a third possible argument, called *server*, but is required for additional definition of sever-UI relationships, completely unnecessary when writing simpler apps. 
+Every server function has to contain two arguments, one to obtain an input from the UI, called simply `input`, and second used to store all rendered objects, not surprisingly named `output`. In actuality, there is a third possible argument, called `server`, but is required for additional definition of sever-UI relationships, completely unnecessary when writing simpler apps. 
 | 
-{} brackets contain all the R code defining internal logic of an app, further wrapped within functions used to capture ("render") and output. For example, *renderPlot()* function will be able to render a standard graphic input from ggplot. *renderTable()* will render the majority of table formats, with *renderDataTable()* being a more advanced form of it for more interactive outputs. Printed output, like one provided by e.g. *summary()* function, can be rendered when nested in *renderPrint()*, while regular text output will be easily processed by *renderText()*. However, it is good to note that in case of text/print input an expression to evaluate must be put within {} brackets, e.g. *renderPrint({"Expression to evaluate"})*. As a part of a standard package there is even a function that renders images (*renderImage()*, either passed from the user, stored in a server or from the external website) or elements of the UI (*renderUI()*).
+{} brackets contain all the R code defining internal logic of an app, further wrapped within functions used to capture ("render") and output. For example, `renderPlot()` function will be able to render a standard graphic input from ggplot. `renderTable()` will render the majority of table formats, with `renderDataTable()` being a more advanced form of it for more interactive outputs. Printed output, like one provided by e.g. `summary()` function, can be rendered when nested in `renderPrint()`, while regular text output will be easily processed by `renderText()`. However, it is good to note that in case of text/print input an expression to evaluate must be put within {} brackets, e.g. `renderPrint({"Expression to evaluate"})`. As a part of a standard package there is even a function that renders images (`renderImage()`, either passed from the user, stored in a server or from the external website) or elements of the UI (`renderUI()`).
 
 | 
-Specific input data are subsetted from the general *input* object by using a dollar operator and following by an established id, in a similar way as e.g. subsetting data frames by column names works. For example, if a text input id was defined as *textInput1*, then it can be called on a server level by using *input$textInput1*. 
+Specific input data are subsetted from the general `input` object by using a dollar operator and following by an established id, in a similar way as e.g. subsetting data frames by column names works. For example, if a text input id was defined as `textInput1`, then it can be called on a server level by using `input$textInput1`. 
 
 |
-For the rendering function to properly pass the rendered object to a sever output it has to be saved as a part of the *output*. It is as simple as assigning it to *output* under a specific name (id), eg. "*output$Plot*".
+For the rendering function to properly pass the rendered object to a sever output it has to be saved as a part of the `output`. It is as simple as assigning it to `output` under a specific name (id), eg. "`output$Plot`".
 
 |
 Stored input can be of a variety of formats, what should be remembered when writing the server code. Usually inputs are either numeric (e.g. *1*) or text data (e.g. *"1"*), and are defined when creating a widget. However, widgets can obtain also other formats, including data frames, images or geometrics.
@@ -502,7 +506,7 @@ Stored input can be of a variety of formats, what should be remembered when writ
 |
 So, how it works in case of the whole code? 
 
-Let's assume we want to render a simple histogram based on whichever measurement the user has chosen from all available in the Iris data set (see the code below). Firstly, we create a select-input widget, *Measurements*, which obtains the user's choice as text data and passes it to the input object in such a form. On the server side, we use *renderPlot()* to get a rendered histogram, saved as *output$resultPlot*. Within the render function we nest a proper *ggplot()* equation, with geometry used being *geom_histogram()* and data set being assigned as *iris*. as x in the *aes()* we put *iris[[input$Measurements]]*, what means we choose a column named *input$Measurements*. as the input is of the expected type (text), it should provide os with the expected result, i.e. a histogram of a user-defined iris measurement.
+Let's assume we want to render a simple histogram based on whichever measurement the user has chosen from all available in the Iris data set (see the code below). Firstly, we create a select-input widget, Measurements, which obtains the user's choice as text data and passes it to the input object in such a form. On the server side, we use `renderPlot()` to get a rendered histogram, saved as `output$resultPlot`. Within the render function we nest a proper `ggplot()` equation, with geometry used being `geom_histogram()` and data set being assigned as `iris`. as x in the `aes()` we put `iris[[input$Measurements]]`, what means we choose a column named `input$Measurements`. as the input is of the expected type (text), it should provide os with the expected result, i.e. a histogram of a user-defined iris measurement.
 
 |
 ```{r eval=FALSE, echo=TRUE}
@@ -543,7 +547,7 @@ Let's assume we want to render a simple histogram based on whichever measurement
 | 
 What if the server needs to pass information within itself? 
 
-One of the key points in coding good practices is to reduce code redundancy to the minimum. To work around that issue function *reactive()* was provided as an integral part of the Shiny library. It creates an object to be utilized only within a server, passable to other elements of the severer code, both other reactive code as well as object renditions. As in some other functions, code that is to be computed is put in {} brackets, e.g. *reactive({/input here/})*. 
+One of the key points in coding good practices is to reduce code redundancy to the minimum. To work around that issue function `reactive()` was provided as an integral part of the Shiny library. It creates an object to be utilized only within a server, passable to other elements of the severer code, both other reactive code as well as object renditions. As in some other functions, code that is to be computed is put in {} brackets, e.g. `reactive({/input here/})`. 
 
 
 ```{r eval=FALSE, echo=TRUE}
@@ -597,7 +601,7 @@ One of the key points in coding good practices is to reduce code redundancy to t
 |
 Displaying output within the UI is arguably the easiest part of creating a Shiny app.
 
-Similarly to rendering output on a server side, displaying it as a part of a UI requires dedicated functions. *plotOutput()* is used to display plot geometry, *tableOutput()* and *dataTableOutput()* are used to display tables (with second providing more interactivity), *textOutput()* and *verbatimTextOutput()* display text, *htmlOutput()* and *uiOutput()* display html code, *imageOutput()* display images. Those functions only needs to have an output name defined within (). Once nested within the layout elements and assigned an output do dispaly should work as expected once the app is run.
+Similarly to rendering output on a server side, displaying it as a part of a UI requires dedicated functions. `plotOutput()` is used to display plot geometry, `tableOutput()` and `dataTableOutput()` are used to display tables (with second providing more interactivity), `textOutput()` and `verbatimTextOutput()` display text, `htmlOutput()` and `uiOutput()` display html code, `imageOutput()` display images. Those functions only needs to have an output name defined within `()`. Once nested within the layout elements and assigned an output do display should work as expected once the app is run.
 
 
 | 
@@ -635,7 +639,7 @@ Similarly to rendering output on a server side, displaying it as a part of a UI 
 | 
 So, how does the final application look when we combine all the elements? And how does the whole thought process look, from a key idea?
 
-You can find the example app code here, after the app explanation, as well as load the app from your RStudio by typing *shiny::runGitHub("ShinyTutorial","DCS-training", ref = "main", subdir = "appexample")* in your console. 
+You can find the example app code here, after the app explanation, as well as load the app from your RStudio by typing `shiny::runGitHub("ShinyTutorial","DCS-training", ref = "main", subdir = "appexample")` in your console. 
 
 |
 |
@@ -644,13 +648,13 @@ You can find the example app code here, after the app explanation, as well as lo
 |
 Generally, the main idea behind this app, apart from an example, was to be able to explore specific measurements, both visually as well as via descriptive statistics, while having some control over the output. Especially important was to be able to differentiate between different iris species and how it may affect the analysis.
 
-But how to achieve that? All measurements are in cm with one decimal value. Visually, analysis can be done via plotting them as histograms, with *ggplot* package being used for that end. In turn, basic descriptive statistics for numerical data can be easily obtained through the *summary()* function. Moreover, it would be beneficial to also display somewhere a data table, with all currently used measurements displayed. In that case we can use the *DT* library to get a more interactive experience, with a data table containing basic sorting actions.
+But how to achieve that? All measurements are in cm with one decimal value. Visually, analysis can be done via plotting them as histograms, with `ggplot` package being used for that end. In turn, basic descriptive statistics for numerical data can be easily obtained through the `summary()` function. Moreover, it would be beneficial to also display somewhere a data table, with all currently used measurements displayed. In that case we can use the DT library to get a more interactive experience, with a data table containing basic sorting actions.
 
-Once we know what we want to do, let's proceed to the layout. Considering the app's aim is relatively simple, a standard sidebar layout seems more than enough. All widgets can be gathered in a side panel, while the output can be displayed within the main panel. To make sure we have enough space within the main panel, we can include a *tabsetPanel()* function, with several tab panels for the output. Tabs defined are "Plot" for the histogram, "Summary" for the descriptive statistics, "Table" for the table with currently used measurements, and perhaps "About the app" to write down any information beneficial for the user to know. For a slightly different aesthetic experience, we can include *shinytheme("yeti")* within the *fluidPage()*.
+Once we know what we want to do, let's proceed to the layout. Considering the app's aim is relatively simple, a standard sidebar layout seems more than enough. All widgets can be gathered in a side panel, while the output can be displayed within the main panel. To make sure we have enough space within the main panel, we can include a `tabsetPanel()` function, with several tab panels for the output. Tabs defined are `"Plot"` for the histogram, `"Summary"` for the descriptive statistics, "Table" for the table with currently used measurements, and perhaps "About the app" to write down any information beneficial for the user to know. For a slightly different aesthetic experience, we can include `shinytheme("yeti")` within the `fluidPage()`.
 
-Next, the widgets. Those should be put within the side panel and organized in descending importance. The key issue, the choice of measurement to explore, can be a *selectInput()* widget, with four defined answers and displayed as first on the side panel. Another issue is the measurements of which species to include. This can be solved by using *checkboxGroupInput()*, by defining a checkbox for each species. However, if we think about it, if we will be taking the measurement of more than one species, we can either analyse all as one group or we can analyse them separately. So, below the species checkboxes, another checkbox may pop up, *checkboxInput()*, if more than one species is selected, when nested within the *conditionalPanel()*. By default, all species are analysed jointly, but the pop-up checkbox can be unchecked. As histogram plot readability depends on the bin size used, and iris measurements differ enough that one size may not be informative enough for all the cases, as the last widget we can add a slider input *sliderInput()* to customize bin sizes. Within the input obtained, two are text input (measurements and species), one is a logical value (pop-up checkbox) and one is a numerical value (bin size slider).
+Next, the widgets. Those should be put within the side panel and organized in descending importance. The key issue, the choice of measurement to explore, can be a selectInput() widget, with four defined answers and displayed as first on the side panel. Another issue is the measurements of which species to include. This can be solved by using checkboxGroupInput(), by defining a checkbox for each species. However, if we think about it, if we will be taking the measurement of more than one species, we can either analyse all as one group or we can analyse them separately. So, below the species checkboxes, another checkbox may pop up, `checkboxInput()`, if more than one species is selected, when nested within the `conditionalPanel()`. By default, all species are analysed jointly, but the pop-up checkbox can be unchecked. As histogram plot readability depends on the bin size used, and iris measurements differ enough that one size may not be informative enough for all the cases, as the last widget we can add a slider input `sliderInput()` to customize bin sizes. Within the input obtained, two are text input (measurements and species), one is a logical value (pop-up checkbox) and one is a numerical value (bin size slider).
 
-The server-side of this app should contain three render options (plot, summary statistics and table). In all three cases a data frame of a subsetted measurements and species is used, what means it should be defined as first to avoid redundancy. We obtain it by using a *reactive()* function and inputs related to measurements and species. In a *subset()* function, we define subsetted data frame as "iris", and species to subset related to species input. Subsetted columns include only species and the appropriate measurement. Then, obtained *dataReactive()* table can be used in the output rendition of a histogram (*renderPlot()*), summary statistics(*renderPrint()*) or just being displayed as its own output (*renderDataTable()*). When defining a histogram in *renderPlot()*, we also make use of the bin size input as well as the pop-up checkbox. In case of *renderPrint()*, apart from *dataReactive()* we only make use of the pop-up checkbox input. Once done, rendered output is displayed in a pre-defined tab panels.
+The server-side of this app should contain three render options (plot, summary statistics and table). In all three cases a data frame of a subsetted measurements and species is used, what means it should be defined as first to avoid redundancy. We obtain it by using a `reactive()` function and inputs related to measurements and species. In a `subset()` function, we define subsetted data frame as "iris", and species to subset related to species input. Subsetted columns include only species and the appropriate measurement. Then, obtained `dataReactive()` table can be used in the output rendition of a histogram (`renderPlot()`), summary statistics(`renderPrint()`) or just being displayed as its own output (`renderDataTable()`). When defining a histogram in `renderPlot()`, we also make use of the bin size input as well as the pop-up checkbox. In case of `renderPrint()`, apart from `dataReactive()` we only make use of the pop-up checkbox input. Once done, rendered output is displayed in a pre-defined tab panels.
 
 |
 |
@@ -846,7 +850,7 @@ knitr::include_graphics("https://raw.github.com/DCS-training/ShinyTutorial/main/
 
 | 
 [GitHub](https://github.com/) (see figure above) is a free repository, primarily utilized by developers to store, share and manage their code and related files. 
-After creating an account you can create a repository ([see step by step here](https://docs.github.com/en/get-started/quickstart/create-a-repo)), name it as you wish (however, it is important later), make it public (to be accessible to other people than you), and upload necessary files, in this case the application R file and its dependencies (e.g. necessary datasets). Once done, anyone can call your app from the RStudio environment by using *runGitHub()* function, as long as the main R file containing an app code is called *app.R*. It is really easy to do, with the function only requiring repository name and user name as arguments, plus folder name (usually "main"), see *runGitHub("repository_name","user_account_name", ref="main")*. 
+After creating an account you can create a repository ([see step by step here](https://docs.github.com/en/get-started/quickstart/create-a-repo)), name it as you wish (however, it is important later), make it public (to be accessible to other people than you), and upload necessary files, in this case the application R file and its dependencies (e.g. necessary datasets). Once done, anyone can call your app from the RStudio environment by using `runGitHub()` function, as long as the main R file containing an app code is called `app.R`. It is really easy to do, with the function only requiring repository name and user name as arguments, plus folder name (usually "main"), see `runGitHub("repository_name","user_account_name", ref="main")`. 
 
 | 
 ```{r fig.align="center", fig.show="hold", echo=FALSE,  fig.cap = "Shinyapps.io user panel for a shiny app", out.width = '90%'}
@@ -858,10 +862,10 @@ knitr::include_graphics("https://raw.github.com/DCS-training/ShinyTutorial/main/
 *Shinyapps.io Example*
 
 | 
-[Shinyapps.io](https://www.shinyapps.io/) is a server dedicated specifically to host compiled Shiny apps. Free account is relatively restrictive (only 25 hours of active usage) but it is a good starting point for someone new to web publishing. On the RStudio side, a *rsconnect* library has to be installed, and RStudio later configured to link to the *Shinyapps* account. However, once set application can be easily uploaded just by clicking *Publish the application or document* button and following the prompts to link your RStudio with your *Shinyapps.io* account. Once done, the whole code and all dependencies  are compiled into a standalone app and sent to the server, where its further deployment (e.g. assigned URL) may be administered. See [here](https://shiny.rstudio.com/articles/shinyapps.html) for a detailed step-by-step guide.
+[Shinyapps.io](https://www.shinyapps.io/) is a server dedicated specifically to host compiled Shiny apps. Free account is relatively restrictive (only 25 hours of active usage) but it is a good starting point for someone new to web publishing. On the RStudio side, a `rsconnect` library has to be installed, and RStudio later configured to link to the `Shinyapps` account. However, once set application can be easily uploaded just by clicking `Publish the application or document` button and following the prompts to link your RStudio with your `Shinyapps.io` account. Once done, the whole code and all dependencies  are compiled into a standalone app and sent to the server, where its further deployment (e.g. assigned URL) may be administered. See [here](https://shiny.rstudio.com/articles/shinyapps.html) for a detailed step-by-step guide.
 
 | 
-It is worth noting, that compiled dependencies also include libraries. It may result in a final app being quite heavy if you utilize functions from many or bigger libraries. If you use only one function from a specific package it may be better to use *::* than to load a whole library. 
+It is worth noting, that compiled dependencies also include libraries. It may result in a final app being quite heavy if you utilize functions from many or bigger libraries. If you use only one function from a specific package it may be better to use `::` than to load a whole library. 
 
 \pagebreak
 \begin{center}
